@@ -1,118 +1,123 @@
-const { AuthenticationError } = require('apollo-server-express');
+const { AuthenticationError } = require("apollo-server-express");
 const { User, Item, History } = require("../models");
 const { signToken } = require("../utils/auth");
 
-
 const resolvers = {
-    Query: {
-        //fine one user and populate the items and history ref
-        user: async (parent, {username}) => {
-            return User.findOne({username}).populate('items').populate({path:'history', populate: {path: 'items'} }).exec()
-        },
-
-        //find all user and populate the item and history ref
-        users: async () => {
-            return User.find().populate('items').populate({path:'history', populate: {path: 'items'} }).exec();
-        },
-
-        //find all item (review is already included because it is a schema under item). sort item by createdAt
-        items: async () => {
-            return Item.find().populate('review')
-        },
-
-        //find single item with the itemID
-        item: async(parent, {itemId}) => {
-            return Item.findOne({itemId})
-        },
-
-        //find single historyOrder with orderId and populate the items data
-        history: async (parent, {orderId}) => {
-            return History.findOne({orderId}).populate('items')
-        },
-
-        //find all history and populate all the item's data
-        histories: async () => {
-            return History.find().populate('items')
-        }
+  Query: {
+    //fine one user and populate the items and history ref
+    user: async (parent, { username }) => {
+      return User.findOne({ username })
+        .populate("items")
+        .populate({ path: "history", populate: { path: "items" } })
+        .exec();
     },
-    Mutation: {
-        addUser: async (parent, {username, email, password, role_id}) => {
-            const user = await User.create({ username, email, password, role_id})
-            const token = signToken(user)
 
-            return { token, user }
-        },
-        login: async (parent, { email, password }) => {
-            const user = await User.findOne({ email })
+    //find all user and populate the item and history ref
+    users: async () => {
+      return User.find()
+        .populate("items")
+        .populate({ path: "history", populate: { path: "items" } })
+        .exec();
+    },
 
-            if(!user) {
-                throw new AuthenticationError('Incorrect credentials')
-            }
+    //find all item (review is already included because it is a schema under item). sort item by createdAt
+    items: async () => {
+      return Item.find().populate("review");
+    },
 
-            const correctPw = await user.isCorrectPassword(password)
+    //find single item with the itemID
+    item: async (parent, { itemId }) => {
+      return Item.findOne({ itemId });
+    },
 
-            if(!correctPw) {
-                throw new AuthenticationError('Incorrect Password')
-            }
+    //find single historyOrder with orderId and populate the items data
+    history: async (parent, { orderId }) => {
+      return History.findOne({ orderId }).populate("items");
+    },
 
-            const token = signToken(user)
+    //find all history and populate all the item's data
+    histories: async () => {
+      return History.find().populate("items");
+    },
+  },
+  Mutation: {
+    addUser: async (parent, { username, email, password, role_id }) => {
+      const user = await User.create({ username, email, password, role_id });
+      const token = signToken(user);
 
-            return { token, user }
-        },
+      return { token, user };
+    },
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
 
-        addItem: async (parent, { name, description, count, price, username }) => {
-            const item = await Item.create({ name, description, count, price});
+      if (!user) {
+        throw new AuthenticationError("Incorrect credentials");
+      }
 
-            await User.findOneAndUpdate(
-                {username: username},
-                { $push: {item: item._id}}
-            );
+      const correctPw = await user.isCorrectPassword(password);
 
-            return item;
-        },
+      if (!correctPw) {
+        throw new AuthenticationError("Incorrect Password");
+      }
 
-        addReview: async (parent, { itemId, reviewBody, writtenBy }) => {
-            return Item.findOneAndUpdate(
-                { _id: itemId },
-                { $addToSet: { review: { reviewBody, writtenBy }}},
-                { new: true, runValidators: true }
-            )
-        },
+      const token = signToken(user);
 
-        createHistory: async (parent, {username, itemArray}) => {
-            if (!itemArray){
-                itemArray = []
-            };
+      return { token, user };
+    },
 
-            const history = await History.create({ username, itemArray })
+    addItem: async (parent, { name, description, count, price, username }) => {
+      const item = await Item.create({ name, description, count, price });
 
-            return history
-        },
+      await User.findOneAndUpdate(
+        { username: username },
+        { $push: { item: item._id } }
+      );
 
-        updateHistory: async (parent, {orderId, itemId}) => {
-            return History.findOneAndUpdate(
-                { orderId: orderId},
-                { $push: { items: {itemId} }},
-                { new: true }
-            )
-        },
+      return item;
+    },
 
-        removeItem: async (parent, {itemId}) => {
-            return Item.findOneAndDelete({ _id: itemId })
-        },
+    addReview: async (parent, { itemId, reviewBody, writtenBy }) => {
+      return Item.findOneAndUpdate(
+        { _id: itemId },
+        { $addToSet: { review: { reviewBody, writtenBy } } },
+        { new: true, runValidators: true }
+      );
+    },
 
-        removeReview: async(parent, {itemId, reviewId }) => {
-            return Item.findOneAndUpdate(
-                { _id: itemId },
-                { $pull: { review: { reviewId: reviewId }}},
-                { new: true }
-            )
-        },
+    createHistory: async (parent, { username, itemArray }) => {
+      if (!itemArray) {
+        itemArray = [];
+      }
 
-        removeHistory: async (parent, {orderId}) => {
-            return History.findOneAndDelete({ _id: orderId })
-        }
-    }
-}
+      const history = await History.create({ username, itemArray });
 
-module.exports = resolvers
+      return history;
+    },
+
+    updateHistory: async (parent, { orderId, itemId }) => {
+      return History.findOneAndUpdate(
+        { orderId: orderId },
+        { $push: { items: { itemId } } },
+        { new: true }
+      );
+    },
+
+    removeItem: async (parent, { itemId }) => {
+      return Item.findOneAndDelete({ _id: itemId });
+    },
+
+    removeReview: async (parent, { itemId, reviewId }) => {
+      return Item.findOneAndUpdate(
+        { _id: itemId },
+        { $pull: { review: { reviewId: reviewId } } },
+        { new: true }
+      );
+    },
+
+    removeHistory: async (parent, { orderId }) => {
+      return History.findOneAndDelete({ _id: orderId });
+    },
+  },
+};
+
+module.exports = resolvers;

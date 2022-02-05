@@ -1,96 +1,114 @@
 const posts = [
   {
     title: "What's in my Lash Room?",
-    href: '#',
-    category: { name: 'Article', href: '#' },
+    href: "#",
+    category: { name: "Article", href: "#" },
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.',
-    date: 'Mar 16, 2020',
-    datetime: '2020-03-16',
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.",
+    date: "Mar 16, 2020",
+    datetime: "2020-03-16",
     imageUrl:
-      'https://news.bellalash.com/wp-content/uploads/2021/10/Artboard-1-copy@300x-100-666x666.jpg',
-    readingTime: '6 min',
+      "https://news.bellalash.com/wp-content/uploads/2021/10/Artboard-1-copy@300x-100-666x666.jpg",
+    readingTime: "6 min",
     author: {
-      name: 'Roel Aufderehar',
-      href: '#',
+      name: "Roel Aufderehar",
+      href: "#",
       imageUrl:
-        'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     },
   },
   {
-    title: 'Lashing 101',
-    href: '#',
-    category: { name: 'Video', href: '#' },
+    title: "Lashing 101",
+    href: "#",
+    category: { name: "Video", href: "#" },
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.',
-    date: 'Mar 10, 2020',
-    datetime: '2020-03-10',
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.",
+    date: "Mar 10, 2020",
+    datetime: "2020-03-10",
     imageUrl:
-      'https://news.bellalash.com/wp-content/uploads/2021/10/LifestyleShoot_9.29.2021-72-666x666.jpg',
-    readingTime: '4 min',
+      "https://news.bellalash.com/wp-content/uploads/2021/10/LifestyleShoot_9.29.2021-72-666x666.jpg",
+    readingTime: "4 min",
     author: {
-      name: 'Brenna Goyette',
-      href: '#',
+      name: "Brenna Goyette",
+      href: "#",
       imageUrl:
-        'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     },
   },
   {
-    title: 'Holiday Gift Guide for the Lash Artist',
-    href: '#',
-    category: { name: 'Case Study', href: '#' },
+    title: "Holiday Gift Guide for the Lash Artist",
+    href: "#",
+    category: { name: "Case Study", href: "#" },
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.',
-    date: 'Feb 12, 2020',
-    datetime: '2020-02-12',
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.",
+    date: "Feb 12, 2020",
+    datetime: "2020-02-12",
     imageUrl:
-      'https://news.bellalash.com/wp-content/uploads/2021/11/Screen-Shot-2021-11-11-at-3.27.00-PM.png',
-    readingTime: '11 min',
+      "https://news.bellalash.com/wp-content/uploads/2021/11/Screen-Shot-2021-11-11-at-3.27.00-PM.png",
+    readingTime: "11 min",
     author: {
-      name: 'Daniela Metz',
-      href: '#',
+      name: "Daniela Metz",
+      href: "#",
       imageUrl:
-        'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     },
   },
-]
+];
 
 export default function Blog() {
   return (
-    <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
+    <div className="relative bg-gray-50 px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28">
       <div className="absolute inset-0">
-        <div className="bg-white h-1/3 sm:h-2/3" />
+        <div className="h-1/3 bg-white sm:h-2/3" />
       </div>
-      <div className="relative max-w-7xl mx-auto">
+      <div className="relative mx-auto max-w-7xl">
         <div className="text-center">
-          <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">From the blog</h2>
-          <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed.
+          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+            From the blog
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa
+            libero labore natus atque, ducimus sed.
           </p>
         </div>
-        <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
+        <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
           {posts.map((post) => (
-            <div key={post.title} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
+            <div
+              key={post.title}
+              className="flex flex-col overflow-hidden rounded-lg shadow-lg"
+            >
               <div className="flex-shrink-0">
-                <img className="h-48 w-full object-cover" src={post.imageUrl} alt="" />
+                <img
+                  className="h-48 w-full object-cover"
+                  src={post.imageUrl}
+                  alt=""
+                />
               </div>
-              <div className="flex-1 bg-white p-6 flex flex-col justify-between">
+              <div className="flex flex-1 flex-col justify-between bg-white p-6">
                 <div className="flex-1">
                   <p className="text-sm font-medium text-indigo-600">
                     <a href={post.category.href} className="hover:underline">
                       {post.category.name}
                     </a>
                   </p>
-                  <a href={post.href} className="block mt-2">
-                    <p className="text-xl font-semibold text-gray-900">{post.title}</p>
-                    <p className="mt-3 text-base text-gray-500">{post.description}</p>
+                  <a href={post.href} className="mt-2 block">
+                    <p className="text-xl font-semibold text-gray-900">
+                      {post.title}
+                    </p>
+                    <p className="mt-3 text-base text-gray-500">
+                      {post.description}
+                    </p>
                   </a>
                 </div>
                 <div className="mt-6 flex items-center">
                   <div className="flex-shrink-0">
                     <a href={post.author.href}>
                       <span className="sr-only">{post.author.name}</span>
-                      <img className="h-10 w-10 rounded-full" src={post.author.imageUrl} alt="" />
+                      <img
+                        className="h-10 w-10 rounded-full"
+                        src={post.author.imageUrl}
+                        alt=""
+                      />
                     </a>
                   </div>
                   <div className="ml-3">
@@ -112,5 +130,5 @@ export default function Blog() {
         </div>
       </div>
     </div>
-  )
+  );
 }

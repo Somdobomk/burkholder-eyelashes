@@ -1,25 +1,32 @@
 const products = [
   {
     id: 1,
-    name: 'Platinum+ Adhesive',
+    name: "Platinum+ Adhesive",
     description:
-      'The Platinum+ Adhesive, a top seller for advanced artists, features a thin, smooth consistency and quick bonding time – allowing for fast application. ',
-    href: '#',
+      "The Platinum+ Adhesive, a top seller for advanced artists, features a thin, smooth consistency and quick bonding time – allowing for fast application. ",
+    href: "#",
     quantity: 1,
-    price: '$46.00',
-    imageSrc: 'https://cdn.shopify.com/s/files/1/0539/7102/6115/products/Adhesives_BLAP05_Platinum5ml_Thumbnail_1080x.jpg?v=1614030678',
-    imageAlt: '',
+    price: "$46.00",
+    imageSrc:
+      "https://cdn.shopify.com/s/files/1/0539/7102/6115/products/Adhesives_BLAP05_Platinum5ml_Thumbnail_1080x.jpg?v=1614030678",
+    imageAlt: "",
   },
-]
+];
 
 export default function OrderSummary() {
   return (
     <div className="bg-white">
-      <div className="max-w-3xl px-4 py-16 mx-auto sm:px-6 sm:py-24 lg:px-8">
+      <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <div className="max-w-xl">
-          <h1 className="text-sm font-semibold tracking-wide text-indigo-600 uppercase">Thank you!</h1>
-          <p className="mt-2 text-4xl font-extrabold tracking-tight sm:text-5xl">It's on the way!</p>
-          <p className="mt-2 text-base text-gray-500">Your order #14034056 has shipped and will be with you soon.</p>
+          <h1 className="text-sm font-semibold uppercase tracking-wide text-indigo-600">
+            Thank you!
+          </h1>
+          <p className="mt-2 text-4xl font-extrabold tracking-tight sm:text-5xl">
+            It's on the way!
+          </p>
+          <p className="mt-2 text-base text-gray-500">
+            Your order #14034056 has shipped and will be with you soon.
+          </p>
 
           <dl className="mt-12 text-sm font-medium">
             <dt className="text-gray-900">Tracking number</dt>
@@ -32,21 +39,26 @@ export default function OrderSummary() {
 
           <h3 className="sr-only">Items</h3>
           {products.map((product) => (
-            <div key={product.id} className="flex py-10 space-x-6 border-b border-gray-200">
+            <div
+              key={product.id}
+              className="flex space-x-6 border-b border-gray-200 py-10"
+            >
               <img
                 src={product.imageSrc}
                 alt={product.imageAlt}
-                className="flex-none object-cover object-center w-20 h-20 bg-gray-100 rounded-lg sm:w-40 sm:h-40"
+                className="h-20 w-20 flex-none rounded-lg bg-gray-100 object-cover object-center sm:h-40 sm:w-40"
               />
-              <div className="flex flex-col flex-auto">
+              <div className="flex flex-auto flex-col">
                 <div>
                   <h4 className="font-medium text-gray-900">
                     <a href={product.href}>{product.name}</a>
                   </h4>
-                  <p className="mt-2 text-sm text-gray-600">{product.description}</p>
+                  <p className="mt-2 text-sm text-gray-600">
+                    {product.description}
+                  </p>
                 </div>
-                <div className="flex items-end flex-1 mt-6">
-                  <dl className="flex space-x-4 text-sm divide-x divide-gray-200 sm:space-x-6">
+                <div className="mt-6 flex flex-1 items-end">
+                  <dl className="flex space-x-4 divide-x divide-gray-200 text-sm sm:space-x-6">
                     <div className="flex">
                       <dt className="font-medium text-gray-900">Quantity</dt>
                       <dd className="ml-2 text-gray-700">{product.quantity}</dd>
@@ -65,7 +77,7 @@ export default function OrderSummary() {
             <h3 className="sr-only">Your information</h3>
 
             <h4 className="sr-only">Addresses</h4>
-            <dl className="grid grid-cols-2 py-10 text-sm gap-x-6">
+            <dl className="grid grid-cols-2 gap-x-6 py-10 text-sm">
               <div>
                 <dt className="font-medium text-gray-900">Shipping address</dt>
                 <dd className="mt-2 text-gray-700">
@@ -89,7 +101,7 @@ export default function OrderSummary() {
             </dl>
 
             <h4 className="sr-only">Payment</h4>
-            <dl className="grid grid-cols-2 py-10 text-sm border-t border-gray-200 gap-x-6">
+            <dl className="grid grid-cols-2 gap-x-6 border-t border-gray-200 py-10 text-sm">
               <div>
                 <dt className="font-medium text-gray-900">Payment method</dt>
                 <dd className="mt-2 text-gray-700">
@@ -112,7 +124,7 @@ export default function OrderSummary() {
 
             <h3 className="sr-only">Summary</h3>
 
-            <dl className="pt-10 space-y-6 text-sm border-t border-gray-200">
+            <dl className="space-y-6 border-t border-gray-200 pt-10 text-sm">
               <div className="flex justify-between">
                 <dt className="font-medium text-gray-900">Subtotal</dt>
                 <dd className="text-gray-700">$36.00</dd>
@@ -120,7 +132,9 @@ export default function OrderSummary() {
               <div className="flex justify-between">
                 <dt className="flex font-medium text-gray-900">
                   Discount
-                  <span className="rounded-full bg-gray-200 text-xs text-gray-600 py-0.5 px-2 ml-2">STUDENT50</span>
+                  <span className="ml-2 rounded-full bg-gray-200 py-0.5 px-2 text-xs text-gray-600">
+                    STUDENT50
+                  </span>
                 </dt>
                 <dd className="text-gray-700">-$18.00 (50%)</dd>
               </div>
@@ -137,5 +151,5 @@ export default function OrderSummary() {
         </div>
       </div>
     </div>
-  )
+  );
 }

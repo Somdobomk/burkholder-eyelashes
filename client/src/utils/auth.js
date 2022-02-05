@@ -1,41 +1,40 @@
-import decode from 'jwt-decode';
+import decode from "jwt-decode";
 
 class AuthService {
-    getProfile() {
-        return decode(this.getToken());
+  getProfile() {
+    return decode(this.getToken());
+  }
+
+  loggedIn() {
+    const token = this.getToken();
+
+    return token && !this.isTokenExpired(token) ? true : false;
+  }
+
+  isTokenExpired(token) {
+    const decoded = decode(token);
+
+    if (token.exp < Date.now() / 1000) {
+      localStorage.removeItem("id_token");
+      return true;
     }
 
-    loggedIn() {
-        const token = this.getToken();
+    return false;
+  }
 
-        return token && !this.isTokenExpired(token) ? true : false
-    }
+  getToken() {
+    return localStorage.getItem("id_token");
+  }
 
-    isTokenExpired(token){
-        const decoded = decode(token);
+  login(idToken) {
+    localStorage.setItem("id_token", idToken);
+    window.location.assign("/");
+  }
 
-        if(token.exp < Date.now() / 1000){
-            localStorage.removeItem('id_token');
-            return true;
-        }
-
-        return false
-    }
-
-    getToken() {
-        return localStorage.getItem('id_token')
-    }
-
-    login(idToken){
-        localStorage.setItem('id_token', idToken);
-        window.location.assign('/');
-    }
-
-    logout() {
-        localStorage.removeItem('id_token');
-        window.location.reload();
-    }
-};
+  logout() {
+    localStorage.removeItem("id_token");
+    window.location.reload();
+  }
+}
 
 export default new AuthService();
-

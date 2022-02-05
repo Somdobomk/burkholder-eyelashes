@@ -11,16 +11,18 @@
 
 ## Table of Contents
 
-+ [About](#about)
-+ [Getting Started](#getting_started)
-+ [Contributing](./CONTRIBUTING.md)
-+ [License](./LICENSE)
-+ [Code of Conduct](./CODE_OF_CONDUCT.md)
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Contributing](./CONTRIBUTING.md)
+- [License](./LICENSE)
+- [Code of Conduct](./CODE_OF_CONDUCT.md)
 
 ## About <a name = "about"></a>
+
 Single page e-commerce website based around selling custom eyelash extension kits.
 
 ### Project Requirements
+
 ```
 Your group will use everything you’ve learned throughout this course to create a MERN stack single-page application that works with real-world data to solve a real-world challenge, with a focus on user demand. The user story and acceptance criteria will depend on the project that you create, but your project must fulfill some specific requirements.
 Your project should fulfill the following requirements:
@@ -40,12 +42,12 @@ Your project should fulfill the following requirements:
 ```
 
 ## Getting Started <a name = "getting_started"></a>
+
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
 What things you need to install the software and how to install them.
-
 
 ### Installing
 
